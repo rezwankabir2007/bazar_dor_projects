@@ -2,20 +2,29 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
+
+
+const getSnapshot = () => {
+  return new Date().toLocaleDateString("bn-BD", {
+    dateStyle: "full",
+  });
+};
+
+const getServerSnapshot = () => "";
+
+const subscribe = () => () => {}; 
 
 const Navbar = () => {
-  const [today] = useState(() =>
-    new Date().toLocaleDateString("bn-BD", {
-      dateStyle: "full",
-    })
+  const today = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
   );
 
   return (
     <div className="bg-[#FAFCFA]">
       <div className="container mx-auto flex items-center justify-between py-3">
-      
-
         <Link href="/" className="flex items-center gap-2">
           <div className="p-1">
             <Image
@@ -35,7 +44,6 @@ const Navbar = () => {
           </div>
         </Link>
 
-       
         <div className="flex items-center gap-4">
           <button className="text-sm font-semibold text-[#1D271F]">
             সাইন ইন

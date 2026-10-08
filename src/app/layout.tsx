@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Noto_Serif_Bengali } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-
+import Categories from "@/components/Categories";
+import SingleCategory from "@/components/SingleCategory";
 
 const geistSans = Noto_Serif_Bengali({
 
@@ -24,7 +25,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-[#F0F5F0]">
         <Navbar />
-
+        <Categories />
+        <SingleCategory />
 
         <main className="container  mx-auto  ">{children}</main>
       </body>

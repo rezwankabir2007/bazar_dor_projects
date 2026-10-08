@@ -1,10 +1,15 @@
-import Banner from "@/components/Banner";
+import Banner from "@/components/Banner"
+import PriceUp from "@/components/PriceUp"
 
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <div >
-      <Banner/>
+    <div>
+      <Banner />
+      <PriceUp/>
+
     </div>
-  );
+  )
 }
+
+export default HomePage
