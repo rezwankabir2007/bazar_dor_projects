@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 
 interface MarqueeType {
@@ -28,19 +27,18 @@ const SingleCategory = async () => {
   return (
     <>
       {/* Marquee Animation */}
-      <style >{`
+      <style>{`
         @keyframes marquee {
           from {
             transform: translateX(0);
           }
-
           to {
             transform: translateX(-50%);
           }
         }
 
         .marquee {
-          animation: marquee 60s linear infinite;
+          animation: marquee 50s linear infinite;
         }
 
         .marquee:hover {
@@ -48,40 +46,36 @@ const SingleCategory = async () => {
         }
       `}</style>
 
-      <div className="bg-[#FAFCFA] shadow-md p-2 overflow-hidden">
+      <div className="bg-[#FAFCFA] border-y border-[#E5E7EB] py-2 overflow-hidden shadow-sm">
         <div className="flex w-max marquee">
-          
           {/* First Data */}
           {data.map((marquee) => (
             <Link
               href={`/productdetilse/${marquee.id}`}
               key={`first-${marquee.id}`}
-              className="hover:underline"
+              className="hover:underline shrink-0"
             >
-              <div className="flex items-center gap-1.5 px-5 border-r border-[#E5E7EB] whitespace-nowrap">
-                
+              <div className="flex items-center gap-1.5 px-3 sm:px-5 border-r border-[#E5E7EB] whitespace-nowrap">
                 {/* Icon */}
-                <span className="text-sm">
-                  {marquee.categoryIcon}
-                </span>
+                <span className="text-xs sm:text-sm">{marquee.categoryIcon}</span>
 
                 {/* Name */}
-                <span className="text-[15px] text-[#252B27]">
+                <span className="text-xs sm:text-[15px] font-medium text-[#252B27]">
                   {marquee.nameBn}
                 </span>
 
                 {/* Price */}
-                <span className="text-[15px] text-[#252B27]">
+                <span className="text-xs sm:text-[15px] text-[#252B27]">
                   {marquee.today} টাকা/{marquee.unit}
                 </span>
 
                 {/* Change */}
                 {marquee.change.dir === "up" ? (
-                  <span className="text-[#D03739] font-semibold text-sm">
+                  <span className="text-[#D03739] font-semibold text-xs sm:text-sm">
                     ▲ {marquee.change.pct}%
                   </span>
                 ) : (
-                  <span className="text-[#1A9951] font-semibold text-sm">
+                  <span className="text-[#1A9951] font-semibold text-xs sm:text-sm">
                     ▼ {marquee.change.pct}%
                   </span>
                 )}
@@ -94,31 +88,29 @@ const SingleCategory = async () => {
             <Link
               href={`/productdetilse/${marquee.id}`}
               key={`second-${marquee.id}`}
+              className="hover:underline shrink-0"
             >
-              <div className="flex items-center gap-1.5 px-5 border-r border-[#E5E7EB] whitespace-nowrap">
-                
+              <div className="flex items-center gap-1.5 px-3 sm:px-5 border-r border-[#E5E7EB] whitespace-nowrap">
                 {/* Icon */}
-                <span className="text-sm">
-                  {marquee.categoryIcon}
-                </span>
+                <span className="text-xs sm:text-sm">{marquee.categoryIcon}</span>
 
                 {/* Name */}
-                <span className="text-[15px] text-[#252B27]">
+                <span className="text-xs sm:text-[15px] font-medium text-[#252B27]">
                   {marquee.nameBn}
                 </span>
 
                 {/* Price */}
-                <span className="text-[15px] text-[#252B27]">
+                <span className="text-xs sm:text-[15px] text-[#252B27]">
                   {marquee.today} টাকা/{marquee.unit}
                 </span>
 
                 {/* Change */}
                 {marquee.change.dir === "up" ? (
-                  <span className="text-[#D03739] font-semibold text-sm">
+                  <span className="text-[#D03739] font-semibold text-xs sm:text-sm">
                     ▲ {marquee.change.pct}%
                   </span>
                 ) : (
-                  <span className="text-[#1A9951] font-semibold text-sm">
+                  <span className="text-[#1A9951] font-semibold text-xs sm:text-sm">
                     ▼ {marquee.change.pct}%
                   </span>
                 )}

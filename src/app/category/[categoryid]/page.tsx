@@ -1,6 +1,5 @@
 import ProductList from "@/components/ProductList";
 
-
 interface CategoryType {
   id: number;
   categoryIcon: string;
@@ -31,30 +30,37 @@ const Category = async ({
   const onecategory = data.slice(0, 1);
 
   return (
-    <div className="my-6">
+
+    
+    <div className="my-6 px-4 max-w-7xl mx-auto">
 
       {/* Banner */}
       {onecategory.map((sdata) => (
         <div
           key={sdata.id}
-          className="bg-[#FAFCFA] rounded-2xl p-5"
+          className="bg-[#FAFCFA] rounded-2xl p-4 sm:p-5 mb-6"
         >
-          <div className="flex items-center gap-1">
+         
+         
+          <div className="flex items-center gap-3">
 
             {/* Icon */}
-            <div>
-              <span className="text-4xl">
+          
+            <div className="shrink-0">
+              <span className="text-3xl sm:text-4xl">
                 {sdata.categoryIcon}
               </span>
             </div>
 
             {/* Category Info */}
             <div>
-              <h2 className="text-2xl font-bold text-[#1D271F]">
+              
+              
+              <h2 className="text-xl sm:text-2xl font-bold text-[#1D271F]">
                 {sdata.categoryNameBn}
               </h2>
 
-              <p className="text-[#1D271F] text-sm">
+              <p className="text-[#1D271F] text-xs sm:text-sm">
                 {data.length}টি পণ্যের আজকের দাম ও পরিবর্তন
               </p>
             </div>
