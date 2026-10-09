@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSyncExternalStore } from "react";
+import UserInfo from "./UserInfo";
 
 const getSnapshot = () => {
   return new Date().toLocaleDateString("bn-BD", {
@@ -55,15 +56,7 @@ const Navbar = () => {
 
 
         
-        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
-          <button className="text-xs sm:text-sm font-semibold text-[#1D271F] px-2 py-1.5 hover:text-[#05893E] transition-colors">
-            সাইন ইন
-          </button>
-
-          <button className="bg-[#05893E] hover:bg-[#047936] text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-white shadow-sm transition-all active:scale-95">
-            সাইন আপ
-          </button>
-        </div>
+       <UserInfo/>
 
       </div>
     </div>
