@@ -52,6 +52,9 @@ const Navbar = () => {
         </Link>
 
         {/* Action Buttons */}
+
+
+        
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <button className="text-xs sm:text-sm font-semibold text-[#1D271F] px-2 py-1.5 hover:text-[#05893E] transition-colors">
             সাইন ইন
