@@ -62,16 +62,14 @@ const ProductList = ({ data }: { data: CategoryType[] }) => {
           </p>
         </div>
 
-     
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           {sortedData.map((item) => (
             <Link
-              href={`/productdetilse/${item.id}`}
+              href={`/productdetails/${item.id}`}
               key={item.id}
               className="block group"
             >
               <div className="rounded-xl border border-gray-200 bg-[#FAFCFA] p-3.5 transition-all duration-200 active:scale-[0.98] hover:shadow-sm">
-                
                 {/* Header Info */}
                 <div className="flex items-center gap-3">
                   {/* Icon */}
@@ -117,7 +115,6 @@ const ProductList = ({ data }: { data: CategoryType[] }) => {
                     </span>
                   )}
                 </div>
-
               </div>
             </Link>
           ))}

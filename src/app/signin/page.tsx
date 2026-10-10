@@ -164,7 +164,7 @@ const SignInPage = () => {
         <p className="text-center text-sm text-gray-600 mt-6">
           অ্যাকাউন্ট নেই?{' '}
           <Link
-            href="/sign-up"
+            href="/signup"
             className="text-emerald-600 font-semibold hover:underline"
           >
             সাইন আপ করুন

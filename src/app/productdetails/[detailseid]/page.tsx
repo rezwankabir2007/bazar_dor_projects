@@ -8,21 +8,31 @@ const ProductDetails = async ({
 }) => {
   const { detailseid } = await params;
 
+  // ১. সকল প্রোডাক্টের ডেটা ফেচ করা
   const getdata = await fetch(
-    `https://api.abcz.workers.dev/api/bazardor/products/${detailseid}`,
+    "https://api.abcz.workers.dev/api/bazardor/products",
     {
       cache: "no-store",
     }
   );
 
-  // Product না পাওয়া গেলে not-found page দেখাবে
   if (!getdata.ok) {
     notFound();
   }
 
-  const data: DataType = await getdata.json();
+  const allProducts: DataType[] = await getdata.json();
 
-  // Safe checks and calculations
+  // ২. URL-এর detailseid দিয়ে প্রোডাক্টটি খুঁজে বের করা
+  const data = allProducts.find(
+    (item) => String(item.id) === String(detailseid)
+  );
+
+  // ৩. প্রোডাক্ট না পাওয়া গেলে not-found পেজ দেখাবে
+  if (!data) {
+    notFound();
+  }
+
+  // বাজারের দামের হিসাব ও সেফটি চেক
   const markets = data.markets || [];
 
   const minimumPrice = markets.length
@@ -68,7 +78,7 @@ const ProductDetails = async ({
                   data.change?.dir === "up" ? "text-red-500" : "text-emerald-600"
                 }
               >
-                {data.change?.dir === "up" ? "বেড়েছে" : "কমেছে"} -{" "}
+                {data.change?.dir === "up" ? "বেড়েছে" : "কমেছে"} -{" "}
                 {Math.abs(data.change?.pct || 0)}%
               </span>
             </p>

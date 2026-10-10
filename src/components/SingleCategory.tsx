@@ -51,7 +51,7 @@ const SingleCategory = async () => {
           {/* First Data */}
           {data.map((marquee) => (
             <Link
-              href={`/productdetilse/${marquee.id}`}
+              href={`/productdetails/${marquee.id}`}
               key={`first-${marquee.id}`}
               className="hover:underline shrink-0"
             >
@@ -86,7 +86,7 @@ const SingleCategory = async () => {
           {/* Duplicate Data - For Continuous Marquee */}
           {data.map((marquee) => (
             <Link
-              href={`/productdetilse/${marquee.id}`}
+              href={`/productdetails/${marquee.id}`}
               key={`second-${marquee.id}`}
               className="hover:underline shrink-0"
             >

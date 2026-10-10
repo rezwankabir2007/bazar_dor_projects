@@ -17,32 +17,35 @@ const UserInfo = () => {
       {user ? (
         /* DaisyUI Dropdown Container */
         <div className="dropdown dropdown-end">
-          {/* প্রোফাইল বাটন (যা ক্লিক বা হোভার করলে ড্রপডাউন খুলবে) */}
+          {/* প্রোফাইল বাটন (প্রোফাইল পেজের লিংকসহ) */}
           <div
             tabIndex={0}
             role="button"
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-gray-100 rounded-full transition-colors"
           >
-            <div className="w-9 h-9 rounded-full overflow-hidden relative bg-gray-200 border border-gray-300">
-              {user.image ? (
-                <Image
-                  alt={user?.name || "User Avatar"}
-                  src={user.image}
-                  fill
-                  className="object-cover"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center font-bold text-gray-600">
-                  {user?.name?.charAt(0) || "U"}
-                </div>
-              )}
-            </div>
-            <span className="font-semibold text-gray-800 text-sm hidden sm:block">
-              {user?.name?.split(" ")[0]}
-            </span>
+            <Link href="/profile" className="flex items-center gap-2">
+              <div className="w-9 h-9 rounded-full overflow-hidden relative bg-gray-200 border border-gray-300">
+                {user.image ? (
+                  <Image
+                    alt={user?.name || "User Avatar"}
+                    src={user.image}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center font-bold text-gray-600">
+                    {user?.name?.charAt(0) || "U"}
+                  </div>
+                )}
+              </div>
+              <span className="font-semibold text-gray-800 text-sm hidden sm:block">
+                {user?.name?.split(" ")[0]}
+              </span>
+            </Link>
+
             {/* ছোট অ্যারো আইকন */}
             <svg
-              className="w-3.5 h-3.5 text-gray-600 hidden sm:block"
+              className="w-3.5 h-3.5 text-gray-600 hidden sm:block ml-1"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -60,14 +63,17 @@ const UserInfo = () => {
             className="dropdown-content menu z-[1] p-4 shadow-xl bg-white rounded-2xl w-64 border border-gray-100 mt-2 space-y-3"
           >
             {/* নাম ও ইমেইল সেকশন */}
-            <div className="border-b border-gray-100 pb-2">
+            <Link
+              href="/profile"
+              className="border-b border-gray-100 pb-2 block hover:opacity-80 transition-opacity"
+            >
               <h3 className="font-bold text-gray-900 text-base">
                 {user?.name}
               </h3>
               <p className="text-xs text-gray-500 truncate mt-0.5">
                 {user?.email}
               </p>
-            </div>
+            </Link>
 
             {/* মেনু অপশনসমূহ */}
             <ul className="space-y-1 text-sm font-medium text-gray-700">
