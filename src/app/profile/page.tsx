@@ -1,4 +1,3 @@
-
 "use client";
 
 import { authClient } from "@/lib/auth-client";
@@ -35,7 +34,7 @@ const ProfilePage = () => {
       });
 
       if (nameError) {
-        toast.error(nameError.message || "নাম পরিবর্তন করা যায়নি!");
+        toast.error(nameError.message || "নাম পরিবর্তন করা যায়নি!");
         return;
       }
 
@@ -48,23 +47,23 @@ const ProfilePage = () => {
 
         if (emailError) {
           toast.error(
-            emailError.message || "ইমেইল পরিবর্তন করা যায়নি!"
+            emailError.message || "ইমেইল পরিবর্তন করা যায়নি!"
           );
           return;
         }
 
         toast.success(
-          "নাম আপডেট হয়েছে। ইমেইল পরিবর্তনে ভেরিফিকেশন লাগতে পারে।"
+          "নাম আপডেট হয়েছে। ইমেইল পরিবর্তনে ভেরিফিকেশন লাগতে পারে।"
         );
       } else {
-        toast.success("নাম সফলভাবে পরিবর্তন হয়েছে!");
+        toast.success("নাম সফলভাবে পরিবর্তন হয়েছে!");
       }
 
       setEdit(false);
       router.refresh();
     } catch (error) {
       console.error(error);
-      toast.error("তথ্য পরিবর্তন করতে সমস্যা হয়েছে!");
+      toast.error("তথ্য পরিবর্তন করতে সমস্যা হয়েছে!");
     } finally {
       setSaving(false);
     }
@@ -75,13 +74,14 @@ const ProfilePage = () => {
       await authClient.signOut({
         fetchOptions: {
           onSuccess: () => {
-            toast.success("সাইন আউট সফল হয়েছে!");
-            router.push("/sign-in");
+            toast.success("সাইন আউট সফল হয়েছে!");
+            // সাইন আউট করার পর সরাসরি সাইন ইন পেজে রিডাইরেক্ট করবে
+            window.location.href = "/signin";
           },
         },
       });
     } catch {
-      toast.error("সাইন আউট করতে সমস্যা হয়েছে!");
+      toast.error("সাইন আউট করতে সমস্যা হয়েছে!");
     }
   };
 
@@ -101,7 +101,7 @@ const ProfilePage = () => {
         </p>
 
         <Link
-          href="/sign-in"
+          href="/signin"
           className="rounded-lg bg-[#008744] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#00733a]"
         >
           সাইন ইন করুন
