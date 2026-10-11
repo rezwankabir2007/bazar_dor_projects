@@ -1,35 +1,30 @@
-
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "./lib/auth";
 
+const PUBLIC_ROUTES = ["/signin", "/signup"];
+
 export async function proxy(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  const { pathname } = request.nextUrl;
 
-
-  if (pathname === "/signin" || pathname === "/signup") {
+  if (PUBLIC_ROUTES.includes(pathname)) {
     return NextResponse.next();
   }
 
- 
   const session = await auth.api.getSession({
     headers: request.headers,
   });
 
-
   if (!session?.user) {
     const signInUrl = new URL("/signin", request.url);
-
     signInUrl.searchParams.set("callbackUrl", pathname);
-
     return NextResponse.redirect(signInUrl);
   }
-
 
   return NextResponse.next();
 }
 
 export const config = {
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|svg|webp|gif|ico)$).*)",
   ],
 };
