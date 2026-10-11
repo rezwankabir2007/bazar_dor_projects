@@ -138,13 +138,13 @@ const UserInfo = () => {
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           <Link href={"/signin"}>
             <button className="text-xs sm:text-sm font-semibold text-[#1D271F] px-2 py-1.5 hover:text-[#05893E] transition-colors">
-              Sign In
+              সাইন ইন
             </button>
           </Link>
 
           <Link href={"/signup"}>
             <button className="bg-[#05893E] hover:bg-[#047936] text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-white shadow-sm transition-all active:scale-95">
-              Sign Up
+              সাইন আপ
             </button>
           </Link>
         </div>
