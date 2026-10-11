@@ -7,22 +7,22 @@ if (!process.env.MONGODB_URL) {
 }
 
 const client = new MongoClient(process.env.MONGODB_URL as string);
-
-const db = client.db("bazar_dor"); 
+const db = client.db("bazar_dor");
 
 export const auth = betterAuth({
-  emailAndPassword: { 
-    enabled: true, 
+  baseURL: process.env.BETTER_AUTH_URL || "https://bazar-dor-projects.vercel.app",
+  emailAndPassword: {
+    enabled: true,
   },
   socialProviders: {
-    google: { 
-      clientId: process.env.GOOGLE_CLIENT_ID as string, 
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
-    }, 
-    github: { 
-      clientId: process.env.GIT_HUB_CLIENT_ID as string, 
-      clientSecret: process.env.GIT_HUB_CLIENT_SECRET as string, 
-    }, 
+    google: {
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    },
+    github: {
+      clientId: process.env.GIT_HUB_CLIENT_ID as string,
+      clientSecret: process.env.GIT_HUB_CLIENT_SECRET as string,
+    },
   },
   database: mongodbAdapter(db, {
     client,
