@@ -10,12 +10,10 @@ const client = new MongoClient(process.env.MONGODB_URL as string);
 const db = client.db("bazar_dor");
 
 export const auth = betterAuth({
-  baseURL: process.env.BETTER_AUTH_URL || "https://bazar-dor-projects.vercel.app",
-  
-  // 🟢 সিকিউরিটি ও Invalid Origin এরর বন্ধ করার জন্য এটি যোগ করা জরুরি
+  // অরিজিন সিকিউরিটির জন্য (Local ও Vercel দুটোর জন্যই কাজ করবে)
   trustedOrigins: [
-    "https://bazar-dor-projects.vercel.app",
     "http://localhost:3000",
+    "https://bazar-dor-projects.vercel.app",
   ],
 
   emailAndPassword: {
