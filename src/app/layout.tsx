@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "@/components/Navbar";
 import Categories from "@/components/Categories";
 import SingleCategory from "@/components/SingleCategory";
+import Footer from "@/components/footer";
 
 const geistSans = Noto_Serif_Bengali({
   subsets: ["latin", "bengali"],
@@ -49,6 +50,7 @@ export default function RootLayout({
           pauseOnHover
           theme="light"
         />
+        <Footer/>
       </body>
     </html>
   );
